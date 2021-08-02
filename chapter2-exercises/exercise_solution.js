@@ -35,7 +35,7 @@ for(let i=1;i<=totalNumber;i++){
      }
    
 }
-// Array of each condition statement
+// Array of each condition statements
 console.log(tabVal)
 console.log(tabVal1)
 console.log(tabVal2)
