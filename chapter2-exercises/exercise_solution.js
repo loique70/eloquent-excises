@@ -35,7 +35,7 @@ for(let i=1;i<=totalNumber;i++){
      }
    
 }
-// The number d
+// Array of each condition statement
 console.log(tabVal)
 console.log(tabVal1)
 console.log(tabVal2)
