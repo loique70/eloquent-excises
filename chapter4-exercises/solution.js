@@ -59,7 +59,7 @@ let reverseArrays = []
   }
 
   console.log(arrayToList([1,2,3]))
-
+  
  const listToArray = (myList)=>{
     currentArray = [myList.value];
   if (myList.rest) {
@@ -69,6 +69,16 @@ let reverseArrays = []
 }
 console.log(listToArray({value: 1, rest: {value: 2, rest: {value:3, rest: null}}}))
 
+//prepend
+const prepend = (element,list)=>{
+  return{
+    value:element,
+    rest:list
+  }
+}
+
+console.log(prepend(4,{value: 1, rest: {value: 2, rest: {value:3, rest: null}}}))
+
 let nth = (list, nr)=>{
     if (nr == 0) {
     return list.value
@@ -76,4 +86,22 @@ let nth = (list, nr)=>{
     return nth(list.rest, nr-1)
   }
 }
-console.log(nth({value: 1, rest: {value: 2, rest: {value:3, rest: null}}},1))
+console.log(nth({value: 1, rest: {value: 2, rest: {value:3, rest: null}}},2))
+
+// Deep Comparison
+
+const deepEqual = (obj1,obj2)=>{
+  if(obj1 == obj2) return true;
+
+  if(obj1 == null || typeof obj1 != 'object' || obj2 == null || typeof obj2 != 'object') return false
+  let obj1Count = 0, obj2Count = 0
+  for(let obj1Property in obj1)
+    obj1Count++
+  for(let obj1Property in obj2){
+    obj2Count++
+    if(!(obj1Property in obj1 ) || !deepEqual(obj1.obj1Property,obj2.obj1Property)) return false
+  }
+  return obj1Count === obj2Count
+}
+var obj = {is: "an", object: 2,a:5};
+console.log(deepEqual(obj, { is: "a",object:'',a:''}))
