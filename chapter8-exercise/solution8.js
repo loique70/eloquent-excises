@@ -19,7 +19,7 @@ function reliableMultiply(a, b) {
       throw e;
     }
   }
-}
+} 
 console.log(reliableMultiply(6,8));
 
 // The Locked Box
@@ -63,3 +63,4 @@ try {
     console.log("Error raised: " + e);
 }
 console.log(withBoxUnlocked(box))
+

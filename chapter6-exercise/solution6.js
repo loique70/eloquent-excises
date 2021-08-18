@@ -16,7 +16,7 @@ class Vec {
     }
     
     get length() {
-      return Math.sqrt(this.x**2 + this.y**2);
+      return Math.sqrt(this.x**2 + this.y**2); 
     }
   }
   exampleVector = new Vec(5,7);
@@ -57,6 +57,21 @@ class Vec {
     }
   }
 
+
+  //  Borrowing A Methods
+
+  class MyObject {
+    constructor() {
+    }
+    
+    hasOwnProperty(thisVarWillBeIgnored) {
+      console.log("I do what I want");
+    }
+  }
+  let myObject = new MyObject("hopeful");
+  myObject.hasOwnProperty('test'); 
+  console.log(Object.hasOwnProperty.call(this,'test'));  
+
   //iterables goups
 
   class GroupIterator {
@@ -80,17 +95,3 @@ class Vec {
   for (let el of group.from([4,5,6])) {
     console.log(el); 
   }
-
-  //  Borrowing A Methods
-
-  class MyObject {
-    constructor() {
-    }
-    
-    hasOwnProperty(thisVarWillBeIgnored) {
-      console.log("I do what I want");
-    }
-  }
-  let myObject = new MyObject("hopeful");
-  myObject.hasOwnProperty('test'); 
-  console.log(Object.hasOwnProperty.call(this,'test'));  

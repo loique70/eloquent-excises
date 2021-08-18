@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" multiple>
+    <p></p>
+    <script>
+    let input = document.querySelector("input");
+    let p = document.querySelector('p')
+    input.addEventListener("change", () => {
+    for (let file of Array.from(input.files)) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+    console.log("File", file.name, "starts with",
+    reader.result.slice(0, 20));
+    });
+   p = reader.readAsText(file);
+    }
+    });
+    localStorage.setItem("username", "Anangna");
+console.log(localStorage.getItem("username"));
+// → marijn
+localStorage.removeItem("username");
+    </script>
+</body>
+</html>

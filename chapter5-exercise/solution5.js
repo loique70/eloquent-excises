@@ -15,7 +15,6 @@ console.log(flatten(b))
 
 //your own loop
 const loop = (value, testFct, updateFct, bodyFct)=> {
-    console.log(value);
     for(i=value; testFct(i); i=updateFct(i)) {
       bodyFct(i);
     }
@@ -39,3 +38,38 @@ const loop = (value, testFct, updateFct, bodyFct)=> {
   }
   console.log(every([1,2,3,4,5], x=>x<=5)) 
   console.log(every([2], x=>x>=5))
+
+  //Dominant writting direction
+
+
+function countBy(items, groupName) {
+  let counts = [];
+  for (let item of items) {
+    let name = groupName(item);
+    let known = counts.findIndex(c => c.name == name);
+    if (known == -1) {
+      counts.push({name, count: 1});
+    } else {
+      counts[known].count++;
+    }
+  }
+  return counts;
+}
+
+  function dominantDirection(text) {
+    // Your code here.
+    let scripts = countBy(text, char => {
+      let script = characterScript(char.codePointAt(0));
+      return script ? script.direction : 'none';
+    }).filter(({name}) => name != 'none');
+    let total = scripts.reduce((n, {count}) => n + count, 0);
+    if (total == 0) return "No scripts found"
+    
+    if (scripts.length == 0) return 'ltr'
+    return scripts.reduce((a,b) => a.count > b.count ? a : b).name
+    
+  }
+  console.log(dominantDirection("Hello!"));
+  // → ltr
+  console.log(dominantDirection("Hey, مساء الخير"));
+  // → rtl
